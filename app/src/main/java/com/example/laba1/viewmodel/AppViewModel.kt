@@ -1,9 +1,5 @@
 package com.example.laba1.viewmodel
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,19 +17,16 @@ class AppViewModel : ViewModel() {
         homeMessage.value = "Текст змінено через ViewModel!"
     }
 
-    // Стан для ProfileScreen
-    var profileStatus by mutableStateOf("Профіль користувача: Неактивний")
-        private set
-
+    val profileStatus : StateFlow<String>
+        field = MutableStateFlow("Профіль користувача: Неактивний")
     fun onProfileButtonClick() {
-        profileStatus = "Статус: Профіль оновлено!"
+        profileStatus.value = "Статус: Профіль оновлено!"
     }
 
-    // Стан для SettingsScreen
-    var settingsText by mutableStateOf("Поточні налаштування: Стандартні")
-        private set
+    val settingsText : StateFlow<String>
+        field = MutableStateFlow("Поточні налаштування: Стандартні")
 
     fun onSettingsButtonClick() {
-        settingsText = "Налаштування застосовано!"
+        settingsText.value = "Налаштування застосовано!"
     }
 }

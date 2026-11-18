@@ -9,6 +9,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,8 +26,9 @@ fun SettingsScreen(viewModel: AppViewModel) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
+        val settingsText by viewModel.settingsText.collectAsState()
         Text(
-            text = viewModel.settingsText,
+            text = settingsText,
             fontSize = 18.sp,
             modifier = Modifier.padding(bottom = 12.dp)
         )

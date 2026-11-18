@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -27,8 +29,9 @@ fun ProfileScreen(viewModel: AppViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(bottom = 40.dp)
         ) {
+            val profileStatus by viewModel.profileStatus.collectAsState()
             Text(
-                text = viewModel.profileStatus,
+                text = profileStatus,
                 fontSize = 20.sp
             )
             Spacer(modifier = Modifier.height(16.dp))
